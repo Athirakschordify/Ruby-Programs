@@ -1,6 +1,6 @@
 
 
-puts "enter a number"
+puts "enter a string"
 str=gets.chomp
 length=str.length
 puts "length of the string is #{length}"
