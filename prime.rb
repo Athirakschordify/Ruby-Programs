@@ -1,17 +1,23 @@
-num=10
-count = 0
-if num == 0 || num== 1
-	puts "not prime number"
+
+
+puts "Enter the number:"
+num=gets.chomp.to_i
+count=0
+if (num==0)
+	puts "0 is not prime"
 else
-	for i in 2..num do
-		if num%i == 0
-			count = count+1
-			break
+	
+	i=2
+	while(i<num)
+		if (num%i==0)
+			count+=1
 		end
+		i+=1
 	end
-if count== 0
-	puts "Prime number"
-else
-	puts "Not a prime number"
-	end
+	
 end
+	if count>1
+		puts "#{num} is not a prime number"
+	else
+		puts "#{num} is a prime number"
+	end
