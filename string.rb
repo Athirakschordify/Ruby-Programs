@@ -1,4 +1,7 @@
-str="rubyonrails"
+
+
+puts "enter a number"
+str=gets.chomp
 length=str.length
 puts "length of the string is #{length}"
 if length > 8
