@@ -5,7 +5,7 @@ if num == 0 || num== 1
 else
 	for i in 2..num do
 		if num%i == 0
-			count = 1
+			count = count+1
 			break
 		end
 	end
