@@ -1,0 +1,154 @@
+
+
+
+create table salesman(salesman_id int,name varchar(20),city varchar(20),commision float,primary key(salesman_id));
+insert into salesman(salesman_id,name,city,commision)
+values(5001,'James Hoog','New York',0.5),
+(5002,'Nail Knite','Paris',0.13),
+(5005,'Pit Alex','London',0.11),
+(5006,'Mc Lyon','Paris',0.14);
+
+
+create table customer(customer_id int,customer_name varchar(20),city varchar(20),grade int,salesman_id int,primary key(customer_id),foreign key(salesman_id) references salesman(salesman_id));
+insert into customer(customer_id,customer_name,city,grade,salesman_id)
+values (3002,'Nick Rimando','New York',100,5001),(3001,'Brad Guzan','London',300,5006),
+(3004,'GRaham Zusi','Paris',200,5001),
+(3007,'Brad Davis','New York',200,5001);
+
+
+create table orders(order_no int,purch_amt float,order_date date ,customer_id int,salesman_id int,primary key(order_no));
+insert into orders(order_no,purch_amt,order_date,customer_id,salesman_id)
+values(7001,150.5,'2016-10-05',3005,5002),
+(7009,270.65,'2016-09-10',3001,5001),
+(7002,65.26,'2016-10-05',3002,5006),
+(7004,65.26,'2012-17-08',3001,5006);
+
+
+
+Table: customer
+
+1. Display all the information for those customers with a grade of 200
+
+  select *from customer where grade=200;
+
+2. Display all the customers, who are either belongs to the city New York or not had a grade above 100  
+
+    select *from customer where city = 'New York' or not grade>100;
+
+
+
+
+
+Table: salesman
+
+1. Find those salesmen with all information who gets the commission within a range of 0.12 and 0.14.    
+
+
+    select *from salesman where commision between 0.12 and 0.14;
+
+2. Find all those customers with all information whose names are ending with the letter 'n'
+
+  select *from customer where customer_name like '%n'
+
+3. Find those salesmen with all information whose name containing the 1st character is 'N' and the 4th character is 'l' and rests may be any character.   
+
+  select * from salesman where name like 'N__l%';
+   
+
+4. Find the max and min purchase amount of all orders.
+    
+
+   select max(purch_amt) from orders;
+
+   select min(purch_amt) from orders;
+
+
+5. Display name and commission of all the salesmen
+
+   
+   select name,commision from salesman;
+
+
+6. Display names and city of salesman, who belongs to the city of Paris.  
+
+   select name,city from salesman where city='Paris';
+
+
+
+
+Table: orders
+
+1. Find the total number of salesman in the orders table 
+
+   SELECT COUNT(DISTINCT salesman_id) FROM orders;  
+
+2. Write a SQL statement that counts all orders for a date August 17th, 2012.
+   
+   select count(order_no) from orders where order_date= '08-17-2012';
+
+
+
+
+3. Display the order number, order date and the purchase amount for order(s) which will be delivered by the salesman with ID 5001.
+
+  select order_no,order_date,purch_amt from orders where salesman_id=5001;
+
+
+
+
+
+
+ Table : nobel_win
+
+
+ create table nobel_win(years varchar(4), subject varchar(30),winner varchar(30),country varchar(30),category varchar(20) );
+
+  insert into nobel_win(years,subject,winner,country,category)
+  values('1994','LIterature','Kenzaburo Oe','Japan','Linguist'),('1994','Economics','Reinhard Selten','Germany','Economist'),('1987','Chemistry','Donald J Cram','USA','Scientist')('1971','Literature','Pablo Neruda','Chile','Linguist'),('1970','Chemistry','Luis Federio','France','Scientist');
+
+  1. Show the winner of the 1971 prize for Literature
+
+     select winner from nobel_win where years = '1971' and subject = 'Literature';
+
+
+
+
+
+
+  2. Show all the details of the winners with first name Luis.
+
+    select * from nobel_win where winner like 'Luis %';
+
+
+
+  3. Show all the winners of Nobel prize in the year 1970 the subject belongs to Physiology and Economics.
+
+     select * from nobel_win where years= '1970' and subject not in('Physiology','Economics');
+
+
+
+  4. Find all the details of the Nobel winners for the subject not started with the letter 'P' and arrangedthe list as the most recent comes first, then by name in order
+
+    select *from nobel_win where subject not like 'P%' order by years desc, winner;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
