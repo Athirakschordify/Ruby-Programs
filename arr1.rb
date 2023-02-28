@@ -11,8 +11,14 @@ puts "array is #{array}"
 
 sum=0
 for i in array
-if i %2 ==0
-sum=sum+i
+#if i %2 ==0
+
+#sum=sum+i
+#end
+ #i%2==0 ? : sum=sum+i 
+ sum=i%2 == 0  ? 'a': 'b'
+ puts sum 
+
+
 end
-end
-puts sum
+
